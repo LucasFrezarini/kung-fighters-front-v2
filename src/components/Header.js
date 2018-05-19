@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router";
 
 class Header extends Component {
 	render() {
@@ -66,14 +67,14 @@ class Header extends Component {
 								<div className="mainmenu pull-left">
 									<ul className="nav navbar-nav collapse navbar-collapse">
 										
-										<li><a href="index.html" className="active">Home</a></li>
+										<li><Link to="/" className="active">Home</Link></li>
 										
 										<li className="dropdown"><a href="#">Produtos<i className="fa fa-angle-down"></i></a>
 											<ul role="menu" className="sub-menu">
-												<li><a href="shop.html">Trajes</a></li>
-												<li><a href="product-details.html">Armas</a></li> 
-												<li><a href="cart.html">Equipamentos</a></li> 
-												<li><a href="login.html">Login</a></li>
+												<li><Link to="/products">Trajes</Link></li>
+												<li><Link to="/products">Armas</Link></li> 
+												<li><Link to="/products">Equipamentos</Link></li> 
+												<li><Link to="/products">Login</Link></li>
 											</ul>
 										</li> 
 										

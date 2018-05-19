@@ -1,34 +1,31 @@
 import React, { Component } from 'react';
 
-import CategoryList   from "../components/CategoryList";
-import FeaturedItens  from "../components/FeaturedItens";
-import MainProducts   from "../components/MainProducts";
-import Slider         from "../components/Slider";
+import CategoryList from "../components/CategoryList";
+import ProductsList from "../components/ProductsList";
 
-class MainPage extends Component {
+
+class ProductsPage extends Component {
   render() {
     return (
-    <section>
-      <Slider/>
+      <section>
         <div className="row">
           <div className="col-sm-3">
             <div className="left-sidebar">
               <h2>Categoria</h2>
               <CategoryList/>
-            
+
               <div className="shipping text-center">{/*shipping*/}
                 <img src="images/home/FimSideBar.jpg" alt="" />
               </div>{/*/shipping*/}
             </div>
           </div>
           <div className="col-sm-9 padding-right">
-            <FeaturedItens/>
-            <MainProducts/>           
+            <ProductsList/>         
           </div>
         </div>
-    </section>
+      </section>
     );
   }
 }
 
-export default MainPage;
+export default ProductsPage;
