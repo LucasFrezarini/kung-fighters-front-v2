@@ -4,5 +4,14 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import MainPage from "./pages/MainPage";
+import { Router, Route, browserHistory, IndexRoute } from "react-router";
+
+ReactDOM.render(
+  (<Router history={browserHistory}>
+    <Route path="/" component={App}>
+      <IndexRoute component={MainPage}/>
+    </Route>
+  </Router>)
+  ,document.getElementById('root'));
 registerServiceWorker();
