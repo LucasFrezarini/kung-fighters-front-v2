@@ -8,14 +8,20 @@ class ProductsPage extends Component {
 
   constructor() {
     super();
-    this.state = {products: [], page: 1}
+
+    this.getProducts = this.getProducts.bind(this);
+    this.state = {products: [], actualPage: 1, totalPages: 0}
   }
 
   async componentWillMount() {
+    this.getProducts();
+  }
+
+  async getProducts(page = 1) {
     const baseUrl = Api.getBaseUrl();
-    
+
     try {
-      const response = await fetch(`${baseUrl}/public/product?page=${this.state.page}&registersPerPage=12`);
+      const response = await fetch(`${baseUrl}/public/product?page=${page}&registersPerPage=12`);
 
       if(!response.ok) {
         const txt = await response.text();
@@ -24,10 +30,27 @@ class ProductsPage extends Component {
 
       const json = await response.json();
 
-      this.setState({products: json.products});
+      this.setState({products: json.products, totalPages: json.totalPages});
     } catch (err) {
       console.error(err);
     }
+  }
+
+  changePage(page) {
+    this.setState({actualPage: page});
+    this.getProducts(page);
+  }
+
+  mountPaginationNumbers() {
+    let numbers = [];
+
+    for(let i = 1; i <= this.state.totalPages; i++) {
+      numbers.push((
+        <li className={this.state.actualPage == i ? "active" : ""} onClick={this.changePage.bind(this, i)} key={i}><a>{i}</a></li>
+      ))
+    }
+
+    return numbers;
   }
 
   render() {
@@ -48,9 +71,9 @@ class ProductsPage extends Component {
             <ProductsList products={this.state.products}/>         
           </div>
           <ul className="pagination">
-            <li className="active"><a href="">1</a></li>
-            <li><a href="">2</a></li>
-            <li><a href="">3</a></li>
+            {
+              this.mountPaginationNumbers()
+            }
             <li><a href="">&raquo;</a></li>
           </ul>
         </div>
