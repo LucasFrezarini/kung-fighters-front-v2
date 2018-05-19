@@ -1,11 +1,43 @@
 import React, { Component } from 'react';
 
+import Api            from "../api/Api";
 import CategoryList   from "../components/CategoryList";
 import FeaturedItens  from "../components/FeaturedItens";
 import MainProducts   from "../components/MainProducts";
 import Slider         from "../components/Slider";
 
 class MainPage extends Component {
+
+  constructor() {
+    super();
+
+    this.loadFeaturedProducts = this.loadFeaturedProducts.bind(this);
+    this.state = {products: []}
+  }
+
+  componentWillMount() {
+    this.loadFeaturedProducts();
+  }
+  
+  async loadFeaturedProducts() {
+    const baseUrl = Api.getBaseUrl();
+
+    try {
+      const response = await fetch(`${baseUrl}/public/product?page=1&registersPerPage=3&featured=true&order=create_date`);
+
+      if(!response.ok) {
+        const txt = await response.text();
+        throw new Error(`Erro ao buscar a listagem de produtos: ${txt} `);
+      }
+
+      const json = await response.json();
+
+      this.setState({products: json.products});
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   render() {
     return (
     <section>
@@ -22,7 +54,7 @@ class MainPage extends Component {
             </div>
           </div>
           <div className="col-sm-9 padding-right">
-            <FeaturedItens/>
+            <FeaturedItens products={this.state.products}/>
             <MainProducts/>           
           </div>
         </div>
