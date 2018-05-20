@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header/>
-        <div id="main" class="container">
+        <div id="main" className="container">
           {this.props.children} {/* Vai ser o componente passado pelo react-router*/}
         </div>
         <Footer/>

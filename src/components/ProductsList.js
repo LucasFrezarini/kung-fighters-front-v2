@@ -22,6 +22,7 @@ class ProductsList extends Component {
               {this.props.products.map(product => <Panel title={product.name} 
                 price={product.price} 
                 key={product._id} 
+                id={product._id}
                 img={product.photos.length > 0 ? this._imgBaseUrl + product.photos[0].file : null}/>)
               }
             </div>

@@ -12,7 +12,7 @@ class MainPage extends Component {
     super();
 
     this.loadFeaturedProducts = this.loadFeaturedProducts.bind(this);
-    this.state = {products: []}
+    this.state = {featuredProducts: []}
   }
 
   componentWillMount() {
@@ -32,7 +32,7 @@ class MainPage extends Component {
 
       const json = await response.json();
 
-      this.setState({products: json.products});
+      this.setState({featuredProducts: json.products});
     } catch (err) {
       console.error(err);
     }
@@ -54,7 +54,7 @@ class MainPage extends Component {
             </div>
           </div>
           <div className="col-sm-9 padding-right">
-            <FeaturedItens products={this.state.products}/>
+            <FeaturedItens products={this.state.featuredProducts}/>
             <MainProducts/>           
           </div>
         </div>
