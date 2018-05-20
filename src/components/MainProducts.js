@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import Api from "../api/Api";
+import { Link } from "react-router";
 
 class MainProducts extends Component {
 
@@ -14,10 +15,12 @@ class MainProducts extends Component {
               <div className="product-image-wrapper">
                 <div className="single-products">
                   <div className="productinfo text-center">
-                    <img src={product.photos.length > 0 ? Api.getEndpointForImages() + product.photos[0].file : null} alt="" />
+                    <Link to={`/products/${product._id}`}>
+                      <img src={product.photos.length > 0 ? Api.getEndpointForImages() + product.photos[0].file : null} alt="" />
+                    </Link>
                     <h2>R$ {product.price}</h2>
                     <p>{product.name}</p>
-                    <a className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart"></i>Add to cart</a>
+                    <span className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart"></i>Add to cart</span>
                   </div>              
                 </div>
               </div>
