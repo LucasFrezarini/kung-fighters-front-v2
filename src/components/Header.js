@@ -35,7 +35,7 @@ class Header extends Component {
 						<div className="row">
 							<div className="col-sm-4">
 								<div className="logo pull-left">
-									<a href="index.html"><img src="images/home/logo.png" alt="" /></a>
+									<Link to="/"><img src="/images/home/Logo.png" alt="" /></Link>
 								</div>
 								
 							</div>
