@@ -71,9 +71,9 @@ class Header extends Component {
 										
 										<li className="dropdown"><a href="#">Produtos<i className="fa fa-angle-down"></i></a>
 											<ul role="menu" className="sub-menu">
-												<li><Link to="/products">Trajes</Link></li>
-												<li><Link to="/products">Armas</Link></li> 
-												<li><Link to="/products">Equipamentos</Link></li> 
+												<li><Link to="/products?category=Trajes">Trajes</Link></li>
+												<li><Link to="/products?category=Armas">Armas</Link></li> 
+												<li><Link to="/products?category=Equipamentos">Equipamentos</Link></li> 
 												<li><Link to="/products">Login</Link></li>
 											</ul>
 										</li> 

@@ -10,18 +10,28 @@ class ProductsPage extends Component {
     super();
 
     this.getProducts = this.getProducts.bind(this);
-    this.state = {products: [], actualPage: 1, totalPages: 0}
+    this.state = {products: [], actualPage: 1, totalPages: 0, category: ""}
   }
 
   async componentWillMount() {
     this.getProducts();
   }
 
+  componentDidUpdate(prevProps) {
+    const oldCategory = prevProps.location.query.category;
+    const newCategory = this.props.location.query.category;
+
+    if(oldCategory != newCategory) {
+      this.getProducts();
+    }
+  }
+
   async getProducts(page = 1) {
     const baseUrl = Api.getBaseUrl();
+    const category = this.props.location.query.category;
 
     try {
-      const response = await fetch(`${baseUrl}/public/product?page=${page}&registersPerPage=12`);
+      const response = await fetch(`${baseUrl}/public/product?page=${page}&registersPerPage=12&category=${category}`);
 
       if(!response.ok) {
         const txt = await response.text();
@@ -50,6 +60,10 @@ class ProductsPage extends Component {
       ))
     }
 
+    if(this.state.totalPages > 0) {
+      numbers.push(<li><a href="">&raquo;</a></li>);
+    }
+
     return numbers;
   }
 
@@ -68,13 +82,13 @@ class ProductsPage extends Component {
             </div>
           </div>
           <div className="col-sm-9 padding-right">
-            <ProductsList products={this.state.products}/>         
+            {this.state.products.length > 0 ? <ProductsList products={this.state.products}/> : <h1>Nenhum registro encontrado!</h1>}                  
           </div>
           <ul className="pagination">
             {
               this.mountPaginationNumbers()
             }
-            <li><a href="">&raquo;</a></li>
+            
           </ul>
         </div>
       </section>
