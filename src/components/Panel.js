@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router";
 
 class Panel extends Component {
-  constructor() {
-    super();
-  }
 	render() {
 		return (
 			<div className="col-sm-4">
@@ -16,14 +13,14 @@ class Panel extends Component {
                 <h2>R$ {this.props.price}</h2>
                 <p>{this.props.title}</p>
               </Link>
-              <a href="#" className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart"></i>Add to cart</a>
+              <span className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart"></i>Add to cart</span>
             </div>
             <div className="product-overlay">
               <Link to={`/products/${this.props.id}`}>
               <div className="overlay-content">
                   <h2>R$ {this.props.price}</h2>
                   <p>{this.props.title}</p>
-                <a href="#" className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart"></i>Add to cart</a>
+                <span className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart"></i>Add to cart</span>
               </div>
               </Link>
             </div>

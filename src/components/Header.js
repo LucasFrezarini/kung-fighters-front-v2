@@ -11,18 +11,18 @@ class Header extends Component {
 							<div className="col-sm-6">
 								<div className="contactinfo">
 									<ul className="nav nav-pills">
-										<li><a href="#"><i className="fa fa-phone"></i> +55 011 98472-9387</a></li>
-										<li><a href="#"><i className="fa fa-envelope"></i> contato@kungfighters.com </a></li>
+										<li><a><i className="fa fa-phone"></i> +55 011 98472-9387</a></li>
+										<li><a><i className="fa fa-envelope"></i> contato@kungfighters.com </a></li>
 									</ul>
 								</div>
 							</div>
 							<div className="col-sm-6">
 								<div className="social-icons pull-right">
 									<ul className="nav navbar-nav">
-										<li><a href="#"><i className="fa fa-facebook"></i></a></li>
-										<li><a href="#"><i className="fa fa-twitter"></i></a></li>
-										<li><a href="#"><i className="fa fa-linkedin"></i></a></li>
-										<li><a href="#"><i className="fa fa-google-plus"></i></a></li>
+										<li><a><i className="fa fa-facebook"></i></a></li>
+										<li><a><i className="fa fa-twitter"></i></a></li>
+										<li><a><i className="fa fa-linkedin"></i></a></li>
+										<li><a><i className="fa fa-google-plus"></i></a></li>
 									</ul>
 								</div>
 							</div>
@@ -42,7 +42,7 @@ class Header extends Component {
 							<div className="col-sm-8">
 								<div className="shop-menu pull-right">
 									<ul className="nav navbar-nav">
-										<li><a href="#"><i className="fa fa-user"></i> Conta</a></li>
+										<li><a><i className="fa fa-user"></i> Conta</a></li>
 										<li><a href="cart.html"><i className="fa fa-shopping-cart"></i> Carrinho</a></li>
 										<li><a href="login.html"><i className="fa fa-lock"></i> Login</a></li>
 									</ul>
@@ -69,7 +69,7 @@ class Header extends Component {
 										
 										<li><Link to="/" className="active">Home</Link></li>
 										
-										<li className="dropdown"><a href="#">Produtos<i className="fa fa-angle-down"></i></a>
+										<li className="dropdown"><a>Produtos<i className="fa fa-angle-down"></i></a>
 											<ul role="menu" className="sub-menu">
 												<li><Link to="/products?category=Trajes">Trajes</Link></li>
 												<li><Link to="/products?category=Armas">Armas</Link></li> 

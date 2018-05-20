@@ -21,7 +21,7 @@ class ProductsPage extends Component {
     const oldCategory = prevProps.location.query.category;
     const newCategory = this.props.location.query.category;
 
-    if(oldCategory != newCategory) {
+    if(oldCategory !== newCategory) {
       this.getProducts();
     }
   }
@@ -56,12 +56,8 @@ class ProductsPage extends Component {
 
     for(let i = 1; i <= this.state.totalPages; i++) {
       numbers.push((
-        <li className={this.state.actualPage == i ? "active" : ""} onClick={this.changePage.bind(this, i)} key={i}><a>{i}</a></li>
+        <li className={this.state.actualPage === i ? "active" : ""} onClick={this.changePage.bind(this, i)} key={i}><a>{i}</a></li>
       ))
-    }
-
-    if(this.state.totalPages > 0) {
-      numbers.push(<li><a href="">&raquo;</a></li>);
     }
 
     return numbers;
@@ -88,7 +84,9 @@ class ProductsPage extends Component {
             {
               this.mountPaginationNumbers()
             }
-            
+            {
+              this.state.totalPages > 0 ? <li><a href="">&raquo;</a></li> : ""
+            }
           </ul>
         </div>
       </section>

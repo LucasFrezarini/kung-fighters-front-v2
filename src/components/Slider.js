@@ -9,7 +9,7 @@ class Slider extends Component {
               <div className="col-sm-12">
                 <div id="slider-carousel" className="carousel slide" data-ride="carousel">
                   <ol className="carousel-indicators">
-                    <li data-target="#slider-carousel" data-slide-to="0" class ="active"></li>
+                    <li data-target="#slider-carousel" data-slide-to="0" className="active"></li>
                     <li data-target="#slider-carousel" data-slide-to="1"></li>
                     <li data-target="#slider-carousel" data-slide-to="2"></li>
                   </ol>

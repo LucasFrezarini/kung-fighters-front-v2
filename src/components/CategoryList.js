@@ -16,10 +16,10 @@ class CategoryList extends Component {
           <div id="sportswear" className="panel-collapse collapse">
             <div className="panel-body">
               <ul>
-                <li><a href="#">Yi-Fus </a></li>
-                <li><a href="#">Uniformes Tradicionais </a></li>
-                <li><a href="#">Trajes de Combate </a></li>
-                <li><a href="#">Faixas</a></li>
+                <li><a>Yi-Fus </a></li>
+                <li><a>Uniformes Tradicionais </a></li>
+                <li><a>Trajes de Combate </a></li>
+                <li><a>Faixas</a></li>
               </ul>
             </div>
           </div>
@@ -36,12 +36,12 @@ class CategoryList extends Component {
           <div id="mens" className="panel-collapse collapse">
             <div className="panel-body">
               <ul>
-                <li><a href="#">Bastões</a></li>
-                <li><a href="#">Lançãs</a></li>
-                <li><a href="#">Armas Cortantes</a></li>
-                <li><a href="#">Armas Articuladas</a></li>
-                <li><a href="#">Armas do Jackie Chan</a></li>
-                <li><a href="#">Armas Saotome</a></li>
+                <li><a>Bastões</a></li>
+                <li><a>Lançãs</a></li>
+                <li><a>Armas Cortantes</a></li>
+                <li><a>Armas Articuladas</a></li>
+                <li><a>Armas do Jackie Chan</a></li>
+                <li><a>Armas Saotome</a></li>
               </ul>
             </div>
           </div>
@@ -59,11 +59,11 @@ class CategoryList extends Component {
           <div id="womens" className="panel-collapse collapse">
             <div className="panel-body">
               <ul>
-                <li><a href="#">Luvas</a></li>
-                <li><a href="#">Ataduras</a></li>
-                <li><a href="#">Protetores</a></li>
-                <li><a href="#">Aparadores</a></li>
-                <li><a href="#">Sacos de Pancada</a></li>
+                <li><a>Luvas</a></li>
+                <li><a>Ataduras</a></li>
+                <li><a>Protetores</a></li>
+                <li><a>Aparadores</a></li>
+                <li><a>Sacos de Pancada</a></li>
               </ul>
             </div>
           </div>

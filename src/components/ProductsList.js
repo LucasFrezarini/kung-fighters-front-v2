@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-import CategoryList from "../components/CategoryList";
 import Panel        from "../components/Panel";
 import Api          from "../api/Api";
 

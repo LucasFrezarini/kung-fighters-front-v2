@@ -26,7 +26,7 @@ class Footer extends Component {
           <div className="footer-bottom">
             <div className="container">
               <div className="row">
-                <p className="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Me Motha'Fucka'!</a></span></p>
+                <p className="pull-right">Designed by <span><a target="_blank" rel="noopener noreferrer" href="http://www.themeum.com">Me Motha'Fucka'!</a></span></p>
               </div>
             </div>
           </div>       
