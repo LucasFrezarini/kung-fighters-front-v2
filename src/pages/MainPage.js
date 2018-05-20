@@ -12,11 +12,12 @@ class MainPage extends Component {
     super();
 
     this.loadFeaturedProducts = this.loadFeaturedProducts.bind(this);
-    this.state = {featuredProducts: []}
+    this.state = {featuredProducts: [], newProducts: [], activeCategory: ""}
   }
 
   componentWillMount() {
     this.loadFeaturedProducts();
+    this.loadMainProducts();
   }
   
   async loadFeaturedProducts() {
@@ -38,6 +39,31 @@ class MainPage extends Component {
     }
   }
 
+  async loadMainProducts(category = null) {
+    const baseUrl = Api.getBaseUrl();
+
+    try {
+      const response = await fetch(`${baseUrl}/public/product?page=1&registersPerPage=4&order=create_date${
+        category ? `&category=${category}` : ''}`);
+
+      if(!response.ok) {
+        const txt = await response.text();
+        throw new Error(`Erro ao buscar a listagem de produtos: ${txt} `);
+      }
+
+      const json = await response.json();
+
+      this.setState({newProducts: json.products});
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  setCategory(category) {
+    this.setState({activeCategory : category});
+    this.loadMainProducts(category);
+  }
+
   render() {
     return (
     <section>
@@ -55,7 +81,17 @@ class MainPage extends Component {
           </div>
           <div className="col-sm-9 padding-right">
             <FeaturedItens products={this.state.featuredProducts}/>
-            <MainProducts/>           
+            <div className="category-tab">
+              <div className="col-sm-12">
+                <ul className="nav nav-tabs">
+                  <li className="active"><a href="#Novidades" data-toggle="tab" onClick={this.setCategory.bind(this, "")}>Novidades</a></li>
+                  <li><a href="#Trajes" data-toggle="tab" onClick={this.setCategory.bind(this, "Trajes")}>Trajes</a></li>
+                  <li><a href="#Equipamentos" data-toggle="tab" onClick={this.setCategory.bind(this, "Equipamentos")}>Equipamentos</a></li>
+                  <li><a href="#Armas" data-toggle="tab" onClick={this.setCategory.bind(this, "Armas")}>Armas</a></li>
+                </ul>
+              </div>
+              <MainProducts products={this.state.newProducts} category={this.state.activeCategory}/>    
+            </div>       
           </div>
         </div>
     </section>
