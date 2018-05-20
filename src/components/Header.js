@@ -1,7 +1,31 @@
 import React, { Component } from "react";
+
 import { Link } from "react-router";
+import PubSub 	from "pubsub-js";
 
 class Header extends Component {
+
+	constructor() {
+		super();
+		
+		this.state = {clientName: "", clientToken: ""}
+
+		this.updateClientCredentials = this.updateClientCredentials.bind(this);
+	}
+
+	componentWillMount() {
+		this.updateClientCredentials();
+
+		PubSub.subscribe('client credentials changed', this.updateClientCredentials);
+	}
+
+	updateClientCredentials() {
+		this.setState({
+			clientName: localStorage.getItem('client_name'), 
+			clientToken: localStorage.getItem('client_token')
+		});
+	}
+
 	render() {
 		return (
 			<header id="header">{/*header*/}
@@ -42,9 +66,11 @@ class Header extends Component {
 							<div className="col-sm-8">
 								<div className="shop-menu pull-right">
 									<ul className="nav navbar-nav">
-										<li><a><i className="fa fa-user"></i> Conta</a></li>
+										<li><a><i className="fa fa-user"></i> {this.state.clientName ? this.state.clientName : "Conta"}</a></li>
 										<li><a href="cart.html"><i className="fa fa-shopping-cart"></i> Carrinho</a></li>
-										<li><a href="login.html"><i className="fa fa-lock"></i> Login</a></li>
+										<li>
+											{this.state.clientToken ? <Link to="/logout"><i className="fa fa-lock"></i> Sair</Link> : <Link to="/login"><i className="fa fa-lock"></i> Login</Link>}
+										</li>
 									</ul>
 								</div>
 							</div>
@@ -74,7 +100,6 @@ class Header extends Component {
 												<li><Link to="/products?category=Trajes">Trajes</Link></li>
 												<li><Link to="/products?category=Armas">Armas</Link></li> 
 												<li><Link to="/products?category=Equipamentos">Equipamentos</Link></li> 
-												<li><Link to="/products">Login</Link></li>
 											</ul>
 										</li> 
 										
