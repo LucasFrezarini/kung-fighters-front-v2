@@ -10,6 +10,12 @@ class SingOnForm extends Component {
     this.state = {email: "", password: ""}
   }
 
+  componentWillMount() {
+    if(localStorage.getItem('client_token')) {
+      return this.props.router.push('/');
+    }
+  }
+
   async login(event) {
     event.preventDefault();
 
@@ -46,6 +52,7 @@ class SingOnForm extends Component {
       
       alert('Login realizado com sucesso!');
 
+      this.props.router.push('/');
     } catch (error) {
       console.error(error);
     }

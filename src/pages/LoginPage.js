@@ -9,7 +9,7 @@ class LoginPage extends Component {
       <section id="form">
         <div className="container">
           <div className="row">
-              <SingOnForm/>
+              <SingOnForm {...this.props}/>
             <div className="col-sm-1">
               <h2 className="or">OU</h2>
             </div>
