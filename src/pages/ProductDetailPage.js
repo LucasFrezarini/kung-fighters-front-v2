@@ -7,7 +7,7 @@ class ProductDetailPage extends Component {
 
   constructor() {
     super();
-    this.state = {product: {photos: [], createdAt: ''}};
+    this.state = {product: {photos: [], createdAt: ''}, quantity: 1};
   }
 
   componentWillMount() {
@@ -31,6 +31,50 @@ class ProductDetailPage extends Component {
     } catch (err) {
       console.error(err);
     }
+  }
+
+  async addToCart(event) {
+    if(!localStorage.getItem('client_token')) {
+      alert("Você deve realizar o login primeiro!");
+      return this.props.router.push(`/login?redirectedFrom=/product/${this.state.product._id}`);
+    }
+    
+    const baseUrl = Api.getBaseUrl();
+
+    const opts = {
+      method: 'POST',
+      mode: 'cors',
+      headers: new Headers({
+        'Authorization': localStorage.getItem('client_token'),
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }),
+      body: JSON.stringify({
+        "items": [
+          {
+            "productId": this.state.product._id,
+            "quantity": this.state.quantity
+          }
+        ]
+      })
+    }
+
+    try {
+      const res = await fetch(`${Api.getBaseUrl()}/client/cart`, opts);
+
+      if(!res.ok) {
+        const err = await res.text();
+        throw new Error(`Erro ao adicionar o produto no carrinho de compras: ${err}`);
+      }
+
+      alert('Produto adicionado ao carrinho de compras com sucesso!');
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  updateQuantity(event) {
+    this.setState({quantity: event.target.value});
   }
   
   render() {
@@ -62,8 +106,8 @@ class ProductDetailPage extends Component {
                   <span>
                     <span>R$ {this.state.product.price}</span>
                     <label>Quantity:</label>
-                    <input type="text" value="1" />
-                    <button type="button" className="btn btn-fefault cart">
+                    <input type="text" value={this.state.quantity} onChange={this.updateQuantity.bind(this)} />
+                    <button type="button" className="btn btn-fefault cart" onClick={this.addToCart.bind(this)}>
                       <i className="fa fa-shopping-cart"></i>
                       Add to cart
                     </button>
@@ -73,8 +117,8 @@ class ProductDetailPage extends Component {
                   <a href=""><img src="/images/product-details/share.png" className="share img-responsive"  alt="" /></a>
                 </div>
               </div>
-              <div class="tab-pane fade active in" id="reviews" >
-								<div class="col-sm-12">
+              <div className="tab-pane fade active in" id="reviews" >
+								<div className="col-sm-12">
 									<p>{this.state.product.description}</p>
 									<p><b>Write Your Review</b></p>
 									
@@ -85,7 +129,7 @@ class ProductDetailPage extends Component {
 										</span>
 										<textarea name="" ></textarea>
 										<b>Rating: </b> <img src="images/product-details/rating.png" alt="" />
-										<button type="button" class="btn btn-default pull-right">
+										<button type="button" className="btn btn-default pull-right">
 											Submit
 										</button>
 									</form>
