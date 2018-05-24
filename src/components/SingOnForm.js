@@ -52,7 +52,14 @@ class SingOnForm extends Component {
       
       alert('Login realizado com sucesso!');
 
-      this.props.router.push('/');
+      const redirect = this.props.location.query.redirectedFrom;
+
+      if(redirect)  {
+        this.props.router.push(redirect);
+      } else {
+        this.props.router.push('/');
+      }
+      
     } catch (error) {
       console.error(error);
     }

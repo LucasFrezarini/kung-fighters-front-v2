@@ -36,7 +36,7 @@ class ProductDetailPage extends Component {
   async addToCart(event) {
     if(!localStorage.getItem('client_token')) {
       alert("Você deve realizar o login primeiro!");
-      return this.props.router.push(`/login?redirectedFrom=/product/${this.state.product._id}`);
+      return this.props.router.push(`/login?redirectedFrom=/products/${this.state.product._id}`);
     }
     
     const baseUrl = Api.getBaseUrl();
