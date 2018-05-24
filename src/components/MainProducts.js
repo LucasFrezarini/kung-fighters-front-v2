@@ -20,7 +20,9 @@ class MainProducts extends Component {
                     </Link>
                     <h2>R$ {product.price}</h2>
                     <p>{product.name}</p>
-                    <span className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart"></i>Add to cart</span>
+                    <Link to={`/products/${product._id}`}>
+                      <span className="btn btn-default add-to-cart"><i className="glyphicon glyphicon-th-list"></i>Detalhes</span>
+                    </Link>
                   </div>              
                 </div>
               </div>

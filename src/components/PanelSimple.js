@@ -13,7 +13,9 @@ class Panel extends Component {
                   </Link>
                   <h2>R$ {this.props.price}</h2>
                   <p>{this.props.title}</p>
-                  <a className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart"></i>Add to cart</a>
+                  <Link to={`/products/${this.props.id}`} >
+                    <a className="btn btn-default add-to-cart"><i className="glyphicon glyphicon-th-list"></i>Detalhes</a>
+                  </Link>
                 </div>
             </div>
           </div>

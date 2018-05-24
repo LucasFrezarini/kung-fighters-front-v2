@@ -100,37 +100,36 @@ class ProductDetailPage extends Component {
               </div>
               <div className="col-sm-7">
                 <div className="product-information">
-                  <img src="/images/product-details/new.jpg" className="newarrival" alt="" />
                   <h2>{this.state.product.name}</h2>
                   <img src="/images/product-details/rating.png" alt="" />
                   <span>
                     <span>R$ {this.state.product.price}</span>
-                    <label>Quantity:</label>
+                    <label>Quantidade:</label>
                     <input type="text" value={this.state.quantity} onChange={this.updateQuantity.bind(this)} />
                     <button type="button" className="btn btn-fefault cart" onClick={this.addToCart.bind(this)}>
-                      <i className="fa fa-shopping-cart"></i>
-                      Add to cart
+                      <i className="fa fa-shopping-cart"></i> 
+                        Carrinho
                     </button>
                   </span>
                   <p><b>Modelo:</b> {this.state.product.model} </p>
                   <p><b>Categoria:</b> {this.state.product.category}</p>
-                  <a href=""><img src="/images/product-details/share.png" className="share img-responsive"  alt="" /></a>
+                  
                 </div>
               </div>
               <div className="tab-pane fade active in" id="reviews" >
-								<div className="col-sm-12">
+								<div className="col-sm-12" style={{marginTop: 15}}>
+                  <p><b>Descrição: </b></p>
 									<p>{this.state.product.description}</p>
-									<p><b>Write Your Review</b></p>
+									<p><b>Avaliação: </b></p>
 									
 									<form action="#">
 										<span>
-											<input type="text" placeholder="Your Name"/>
-											<input type="email" placeholder="Email Address"/>
+											<input type="text" placeholder="Nome"/>
+											<input type="email" placeholder="Email"/>
 										</span>
 										<textarea name="" ></textarea>
-										<b>Rating: </b> <img src="images/product-details/rating.png" alt="" />
 										<button type="button" className="btn btn-default pull-right">
-											Submit
+											Enviar
 										</button>
 									</form>
 								</div>

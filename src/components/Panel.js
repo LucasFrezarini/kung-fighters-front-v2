@@ -13,23 +13,17 @@ class Panel extends Component {
                 <h2>R$ {this.props.price}</h2>
                 <p>{this.props.title}</p>
               </Link>
-              <span className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart"></i>Add to cart</span>
+              <span className="btn btn-default add-to-cart"><i className="glyphicon glyphicon-th-list"></i>Detalhes</span>
             </div>
             <div className="product-overlay">
               <Link to={`/products/${this.props.id}`}>
               <div className="overlay-content">
                   <h2>R$ {this.props.price}</h2>
                   <p>{this.props.title}</p>
-                <span className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart"></i>Add to cart</span>
+                <span className="btn btn-default add-to-cart"><i className="glyphicon glyphicon-th-list"></i>Detalhes</span>
               </div>
               </Link>
             </div>
-          </div>
-          <div className="choose">
-            <ul className="nav nav-pills nav-justified">
-              <li><a href=""><i className="fa fa-plus-square"></i>Add to wishlist</a></li>
-              <li><a href=""><i className="fa fa-plus-square"></i>Add to compare</a></li>
-            </ul>
           </div>
         </div>
       </div>
