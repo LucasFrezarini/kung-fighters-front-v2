@@ -103,7 +103,7 @@ class Header extends Component {
 											</ul>
 										</li> 
 										
-										<li><a href="blog.html">Cadastros</a></li>                                    
+										<li><Link to="/new/product">Cadastros</Link></li>                                    
 																		
 										<li><a href="404.html">Debug</a></li>
 									

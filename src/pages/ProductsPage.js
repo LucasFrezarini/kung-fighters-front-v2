@@ -65,7 +65,7 @@ class ProductsPage extends Component {
 
   render() {
     return (
-      <section>
+      <section className="container">
         <div className="row">
           <div className="col-sm-3">
             <div className="left-sidebar">

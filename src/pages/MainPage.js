@@ -66,7 +66,7 @@ class MainPage extends Component {
 
   render() {
     return (
-    <section>
+    <section className="container">
       <Slider/>
         <div className="row">
           <div className="col-sm-3">

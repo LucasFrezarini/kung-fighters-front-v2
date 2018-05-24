@@ -7,6 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 import LoginPage      from "./pages/LoginPage";
 import LogoutPage     from "./pages/LogoutPage";
 import MainPage       from "./pages/MainPage";
+import NewProductPage from "./pages/NewProductPage";
 import ProductDetail  from "./pages/ProductDetailPage";
 import ProductsPage   from "./pages/ProductsPage";
 
@@ -20,6 +21,7 @@ ReactDOM.render(
       <Route path="/products/:id" component={ProductDetail}/>
       <Route path="/login" component={LoginPage}/>
       <Route path="/logout" component={LogoutPage}/>
+      <Route path="/new/product"  component={NewProductPage}/>
     </Route>
   </Router>)
   ,document.getElementById('root'));
